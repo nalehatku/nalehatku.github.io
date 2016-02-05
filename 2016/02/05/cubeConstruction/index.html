@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Cube Construction | Business Inteligence Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="" />
+    
+    <meta name="description" content="Configuration of Cube
+cube is defined in json format
+
+Format description
+name - cube name
+code - cube code ( code of a cube, have to be unique - there can’t be 2 cubes with the same code)
+category - t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cube Construction">
+<meta property="og:url" content="http://uhercikubuntb2.ux.gratex.com/2016/02/05/cubeConstruction/index.html">
+<meta property="og:site_name" content="Business Inteligence Blog">
+<meta property="og:description" content="Configuration of Cube
+cube is defined in json format
+
+Format description
+name - cube name
+code - cube code ( code of a cube, have to be unique - there can’t be 2 cubes with the same code)
+category - t">
+<meta property="og:updated_time" content="2016-02-05T13:52:30.377Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cube Construction">
+<meta name="twitter:description" content="Configuration of Cube
+cube is defined in json format
+
+Format description
+name - cube name
+code - cube code ( code of a cube, have to be unique - there can’t be 2 cubes with the same code)
+category - t">
+
+    
+
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/titillium-web/styles.css" type="text/css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css" type="text/css">
+
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <script src="/vendor/jquery/2.0.3/jquery.min.js" type="text/javascript"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css" type="text/css">
+    
+    
+        <link rel="stylesheet" href="/vendor/scrollLoading/style.css" type="text/css">
+    
+    
+    
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">blog generated from md materials</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/hexo-theme-hueman/">Home</a>
+                                </li>
+                            
+                                        
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/hexo-theme-hueman/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://uhercikubuntb2.ux.gratex.com"></form>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-cubeConstruction" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Cube Construction
+        </h1>
+    
+
+            </header>
+        
+        <div class="article-subtitle">
+            <a href="/2016/02/05/cubeConstruction/" class="article-date">
+    <time datetime="2016-02-05T13:52:30.377Z" itemprop="datePublished">2016-02-05</time>
+</a>
+            
+        </div>
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="Configuration_of_Cube"><a href="#Configuration_of_Cube" class="headerlink" title="Configuration of Cube"></a>Configuration of Cube</h1><ul>
+<li>cube is defined in json format</li>
+</ul>
+<h2 id="Format_description"><a href="#Format_description" class="headerlink" title="Format description"></a>Format description</h2><ul>
+<li>name - cube name</li>
+<li>code - cube code ( code of a cube, have to be unique - there can’t be 2 cubes with the same code)</li>
+<li>category - this attribute is for UI tree - it is used to recognize between types of nodes</li>
+<li>collection - colection name of source data in mongodb (data has to be imported in our database)</li>
+<li><p>dimensionChildren - list of references to dimensions children in cube tree in following format:</p>
+<p>  “dimensionChildren” :<br>  [</p>
+<pre><code>{
+    &quot;_ref&quot; : &amp;lt;ref1&amp;gt;
+},
+{
+    &quot;_ref&quot; : &amp;lt;ref2&amp;gt;
+},
+.
+.
+{
+    &quot;_ref&quot; : &amp;lt;refn&amp;gt;
+}
+</code></pre><p>  ]</p>
+<p>   where &lt;ref1&gt;,&lt;ref2&gt;,..&lt;refn&gt; have to be replaced by real references to dimensions defined later in this file</p>
+<ul>
+<li><p>measureChildren - list of references to measures children in cube tree in following format:</p>
+<p>“measureChildren” :<br>[</p>
+<pre><code>{
+    &quot;_ref&quot; : &amp;lt;ref1&amp;gt;
+},
+{
+    &quot;_ref&quot; : &amp;lt;ref2&amp;gt;
+},
+.
+.
+{
+    &quot;_ref&quot; : &amp;lt;refn&amp;gt;
+}
+</code></pre><p>]</p>
+<p> where &lt;ref1&gt;,&lt;ref2&gt;,..&lt;refn&gt; have to be replaced by real references to measures defined later in this file</p>
+</li>
+<li><p>dimensions - list of dimensions</p>
+<ul>
+<li>name - name of node in tree</li>
+<li>code - code of dimension - has to be unique for cube (no other code of dimension, measure or cube can be same)</li>
+<li>category - category of dimension node. It specifies the role of node in pick-up tree</li>
+<li><p>children - have to be specified if category is D_GROUP or D_HIERARCHIC. It is the list of reference to children nodes in following format:</p>
+<p>  “children”:<br> [</p>
+<pre><code>{
+    &quot;_ref&quot; : &amp;lt;ref1&amp;gt;
+},
+{
+    &quot;_ref&quot; : &amp;lt;ref2&amp;gt;
+},
+.
+.
+{
+    &quot;_ref&quot; : &amp;lt;refn&amp;gt;
+}
+</code></pre><p> ]</p>
+<p>  where &lt;ref1&gt;,&lt;ref2&gt;,..&lt;refn&gt; have to be replaced by real references to dimensions</p>
+</li>
+<li>type - define data type for dimension. It has to be defined if category is D_LEAF</li>
+<li>enum - conditionally compulsory - need to be fullfilled only if type of dimension is enum</li>
+</ul>
+</li>
+<li><p>measures - list of measures</p>
+<ul>
+<li>name - name of node in tree</li>
+<li>code - code of measure - has to be unique for cube (no other code of dimension, measure or cube can be same)</li>
+<li>category - category of measure node. It specifies the role of node in pick-up tree</li>
+<li>path - name of attribute in DB collection</li>
+<li><p>children - have to be specified if category is M_GROUP. It is the list of references to children nodes in following format:</p>
+<p>  “children”:<br> [</p>
+<pre><code>{
+    &quot;_ref&quot; : &amp;lt;ref1&amp;gt;
+},
+{
+    &quot;_ref&quot; : &amp;lt;ref2&amp;gt;
+},
+
+.
+.
+{
+    &quot;_ref&quot; : &amp;lt;refn&amp;gt;
+}
+</code></pre><p> ]</p>
+<p>  where &lt;ref1&gt;,&lt;ref2&gt;,..&lt;refn&gt; have to be replaced by real references to measures</p>
+</li>
+<li>type - define data type for measure. It has to be defined if category is M_LEAF</li>
+<li>operator - aggregation operator used in agg query</li>
+<li>persistScale - shift of decimal point</li>
+<li>hidden: true for measures which should be shown on output. False for measures, which are only sources of data for another measures</li>
+<li>enum - conditionally compulsory - need to be fullfilled only if type of dimension is enum</li>
+<li>level - projection level - 0 - means it is directly in group, 1 - means - first project</li>
+<li>expression - expression used in projection, there are used codes of another helper measures and dependency between them</li>
+<li>dependencies - list of codes of another measures, this measure is dependent on.  </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Enumerations_used_in_cube_construction_3A"><a href="#Enumerations_used_in_cube_construction_3A" class="headerlink" title="Enumerations used in cube construction:"></a>Enumerations used in cube construction:</h3><p>category(enumeration):</p>
+<ul>
+<li>CUBE - category of cube root node</li>
+<li>D_GROUP - used for logically grouping dimension together.</li>
+<li>D_LEAF - pure dimension, which responds to real data in aggregated collection in DB</li>
+<li>D_HIERARCHIC - special type of group dimensions, which can be picked together. It has defined hierarchy order in which the dimensions will be ordered.</li>
+<li>M_GROUP - used for logically grouping measures together.</li>
+<li><p>M_LEAF - pure measure, which responds to real data in aggregated collection in DB</p>
+<p>type(enumeration):</p>
+</li>
+<li>enum</li>
+<li>string</li>
+</ul>
+<h3 id="Example_3A"><a href="#Example_3A" class="headerlink" title="Example:"></a>Example:</h3><p>{<br>    “name” : “Enterprise Logs”,<br>    “code” : “enterprise-logs-cube”,<br>    “id” : “enterprise-logs-cube”,<br>    “category” : “CUBE”,<br>    “collection” : “elcube.el”,<br>    “dimensionChildren” : [<br>        {<br>            “_ref” : “dimension_messagetimegroup”<br>        },<br>        {<br>            “_ref” : “dimension_processstep”<br>        },<br>        {<br>            “_ref” : “dimension_serviceid”<br>        },<br>        {<br>            “_ref” : “dimension_systemid”<br>        },<br>        {<br>            “_ref” : “dimension_serviceidenoquery”<br>        },<br>        {<br>            “_ref” : “dimension_resourcename”<br>        }</p>
+<pre><code>],
+&quot;measureChildren&quot; : [
+    {
+        &quot;_ref&quot; : &quot;measure_count&quot;
+    },
+    {
+        &quot;_ref&quot; : &quot;measure_maxduration&quot;
+    },
+    {
+        &quot;_ref&quot; : &quot;measure_avgduration&quot;
+    }
+],
+&quot;dimensions&quot; : [
+    {
+        &quot;name&quot; : &quot;Process Step&quot;,
+        &quot;code&quot; : &quot;processstep&quot;,
+        &quot;id&quot; : &quot;dimension_processstep&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot; : &quot;string&quot;
+    },
+    {
+        &quot;name&quot; : &quot;User&quot;,
+        &quot;code&quot; : &quot;user&quot;,
+        &quot;id&quot; : &quot;dimension_user&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot; : &quot;string&quot;
+    },
+    {
+        &quot;name&quot; : &quot;Service ID&quot;,
+        &quot;code&quot; : &quot;serviceid&quot;,
+        &quot;id&quot; : &quot;dimension_serviceid&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot; : &quot;string&quot;
+    },
+    {
+        &quot;name&quot; : &quot;System ID&quot;,
+        &quot;code&quot; : &quot;systemid&quot;,
+        &quot;id&quot; : &quot;dimension_systemid&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot; : &quot;string&quot;
+    },
+    {
+        &quot;name&quot; : &quot;Service ID no query&quot;,
+        &quot;code&quot; : &quot;serviceidenoquery&quot;,
+        &quot;id&quot; : &quot;dimension_serviceidenoquery&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot; : &quot;string&quot;
+    },
+    {
+        &quot;name&quot; : &quot;Resource Name&quot;,
+        &quot;code&quot; : &quot;resourcename&quot;,
+        &quot;id&quot; : &quot;dimension_resourcename&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot; : &quot;string&quot;
+    },
+    {
+        &quot;name&quot; : &quot;Message Time&quot;,
+        &quot;code&quot; : &quot;messagetimegroup&quot;,
+        &quot;id&quot; : &quot;dimension_messagetimegroup&quot;,
+        &quot;category&quot; : &quot;D_GROUP&quot;,
+        &quot;children&quot; : [
+            {
+                &quot;_ref&quot; : &quot;dimension_messagetime_hierarchy&quot;
+            },
+            {
+                &quot;_ref&quot; : &quot;dimension_messagetime&quot;
+            },
+            {
+                &quot;_ref&quot; : &quot;dimension_messagetimeyear&quot;
+            },
+            {
+                &quot;_ref&quot; : &quot;dimension_messagetimequart&quot;
+            },
+            {
+                &quot;_ref&quot; : &quot;dimension_messagetimemonth&quot;
+            },
+            {
+                &quot;_ref&quot; : &quot;dimension_messagetimeday&quot;
+            },
+            {
+                &quot;_ref&quot; : &quot;dimension_messagetimedayofweek&quot;
+            },
+            {
+                &quot;_ref&quot; : &quot;dimension_messagetimeweek&quot;
+            }
+        ]
+    },
+    {
+        &quot;name&quot; : &quot;Message Time&quot;,
+        &quot;code&quot; : &quot;messagetime&quot;,
+        &quot;id&quot; : &quot;dimension_messagetime&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot; : &quot;date&quot;
+    },
+    {
+        &quot;name&quot; : &quot;Year of Message&quot;,
+        &quot;code&quot; : &quot;messagetimeyear&quot;,
+        &quot;id&quot; : &quot;dimension_messagetimeyear&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot; : &quot;year&quot;
+    },
+    {
+        &quot;name&quot; : &quot;Month of Message&quot;,
+        &quot;code&quot; : &quot;messagetimemonth&quot;,
+        &quot;id&quot; : &quot;dimension_messagetimemonth&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot;:&quot;month&quot;
+    },
+    {
+        &quot;name&quot; : &quot;Day of Month of Message &quot;,
+        &quot;code&quot; : &quot;messagetimeday&quot;,
+        &quot;id&quot; : &quot;dimension_messagetimeday&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot;:&quot;dayOfMonth&quot;
+    },
+    {
+        &quot;name&quot; : &quot;Day of Week of Message &quot;,
+        &quot;code&quot; : &quot;messagetimedayofweek&quot;,
+        &quot;id&quot; : &quot;dimension_messagetimedayofweek&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot; : &quot;dayOfWeek&quot;
+    },
+    {
+        &quot;name&quot; : &quot;Quarter of Message &quot;,
+        &quot;code&quot; : &quot;messagetimequart&quot;,
+        &quot;id&quot; : &quot;dimension_messagetimequart&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot; : &quot;quart&quot;
+    },
+    {
+        &quot;name&quot; : &quot;Week of Year of Message&quot;,
+        &quot;code&quot; : &quot;messagetimeweek&quot;,
+        &quot;id&quot; : &quot;dimension_messagetimeweek&quot;,
+        &quot;category&quot; : &quot;D_LEAF&quot;,
+        &quot;type&quot; : &quot;week&quot;
+    },
+    {
+        &quot;name&quot; : &quot;Date of Message&quot;,
+        &quot;code&quot; : &quot;messagetime_h&quot;,
+        &quot;id&quot; : &quot;dimension_messagetime_hierarchy&quot;,
+        &quot;category&quot; : &quot;D_HIERARCHIC&quot;,
+        &quot;children&quot; : [
+            {
+                &quot;_ref&quot; : &quot;dimension_messagetimeyear&quot;
+            },
+            {
+                &quot;_ref&quot; : &quot;dimension_messagetimemonth&quot;
+            },
+            {
+                &quot;_ref&quot; : &quot;dimension_messagetime&quot;
+            }
+        ]
+    },
+
+],
+&quot;measures&quot; : [
+
+    {
+        &quot;name&quot; : &quot;Count&quot;,
+        &quot;code&quot; : &quot;count&quot;,
+        &quot;id&quot; : &quot;measure_count&quot;,
+        &quot;category&quot; : &quot;M_LEAF&quot;,
+        &quot;path&quot; : &quot;&quot;,
+        &quot;operator&quot; : &quot;&quot;,
+        &quot;dataType&quot; : &quot;INT&quot;,
+        &quot;persistScale&quot;:0,
+        &quot;hidden&quot;:false,
+        &quot;level&quot;:0 // 0 means group, 1 means - first project
+    },
+    {
+        &quot;name&quot; : &quot;Duration Sum&quot;,
+        &quot;code&quot; : &quot;sumduration&quot;,
+        &quot;id&quot; : &quot;measure_sumduration&quot;,
+        &quot;category&quot; : &quot;M_LEAF&quot;,
+        &quot;path&quot; : &quot;&quot;,
+        &quot;operator&quot; : &quot;&quot;,
+        &quot;dataType&quot; : &quot;INT&quot;,
+        &quot;persistScale&quot;:0,
+        &quot;hidden&quot;:true,
+        &quot;level&quot;:0
+    },
+    {
+        &quot;name&quot; : &quot;Duration Maximum&quot;,
+        &quot;code&quot; : &quot;maxduration&quot;,
+        &quot;id&quot; : &quot;measure_maxduration&quot;,
+        &quot;category&quot; : &quot;M_LEAF&quot;,
+        &quot;path&quot; : &quot;&quot;,
+        &quot;operator&quot; : &quot;&quot;,
+        &quot;dataType&quot; : &quot;INT&quot;,
+        &quot;persistScale&quot;:0,
+        &quot;hidden&quot;:false,
+        &quot;level&quot;:0
+    },
+      {
+          &quot;name&quot; : &quot;Average Duration&quot;,
+          &quot;code&quot; : &quot;avgduration&quot;,
+          &quot;id&quot; : &quot;measure_avgduration&quot;,
+          &quot;category&quot; : &quot;M_LEAF&quot;,
+          &quot;expression&quot;: &apos;{&quot;&quot;:[&quot;&quot;,&quot;&quot;]}&apos;,//codes goes here
+          &quot;dataType&quot; : &quot;INT&quot;,
+          &quot;persistScale&quot;:0,
+          &quot;hidden&quot;:false,
+          &quot;level&quot;:1,
+          &quot;dependencies&quot;:[&quot;sumduration&quot;,&quot;count&quot;]  //codes goes here
+      }
+]
+</code></pre><p>}</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://uhercikubuntb2.ux.gratex.com/2016/02/05/cubeConstruction/" data-id="cik9tv63l0003ms5ryshywcg1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+<section id="comments">
+
+    <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+<script>
+var disqus_shortname = 'nalehatku';
+
+
+var disqus_url = 'http://uhercikubuntb2.ux.gratex.com/2016/02/05/cubeConstruction/';
+
+(function() {
+var dsq = document.createElement('script');
+dsq.type = 'text/javascript';
+dsq.async = true;
+dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+
+</section>
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/02/05/Denovius-BI_Specification/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Specification
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2016/02/05/Analyzer-charts/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Analyzer</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/02/05/design-decisions/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/02/05/design-decisions/" class="title">Design decisions</a></p>
+                            <p class="item-date"><time datetime="2016-02-05T13:52:51.721Z" itemprop="datePublished">2016-02-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/02/05/Denovius-BI_Specification/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/2016/02/05/Denovius-BI_Specification/prototypeBefore.png)" alt="Specification" class="thumbnail-image"></span>
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/02/05/Denovius-BI_Specification/" class="title">Specification</a></p>
+                            <p class="item-date"><time datetime="2016-02-05T13:52:37.465Z" itemprop="datePublished">2016-02-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/02/05/cubeConstruction/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/02/05/cubeConstruction/" class="title">Cube Construction</a></p>
+                            <p class="item-date"><time datetime="2016-02-05T13:52:30.377Z" itemprop="datePublished">2016-02-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/02/05/Analyzer-charts/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/02/05/Analyzer-charts/" class="title">Analyzer</a></p>
+                            <p class="item-date"><time datetime="2016-02-05T13:52:13.053Z" itemprop="datePublished">2016-02-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/02/05/hello-world/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/02/05/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2016-02-05T10:24:17.675Z" itemprop="datePublished">2016-02-05</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2016 Tomas Uhercik</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    
+
+    
+        <script src="/vendor/scrollLoading/jquery.scrollLoading.js" type="text/javascript"></script>
+        <script src="/vendor/scrollLoading/main.js" type="text/javascript"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js" type="text/javascript"></script>
+
+    </div>
+</body>
+</html>
